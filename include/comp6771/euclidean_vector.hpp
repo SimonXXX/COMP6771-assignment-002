@@ -1,8 +1,9 @@
 #ifndef COMP6771_EUCLIDEAN_VECTOR_HPP
 #define COMP6771_EUCLIDEAN_VECTOR_HPP
 
-#include <compare>
+//#include <compare>
 #include <functional>
+#include <iostream>
 #include <list>
 #include <memory>
 #include <ostream>
@@ -23,9 +24,13 @@ namespace comp6771 {
 
 	class euclidean_vector {
 	public:
-		// TODO
+		euclidean_vector();
+		euclidean_vector(int dim);
+		euclidean_vector(int dim, double magnitude);
+		auto test() -> void;
+
 	private:
-		// TODO
+		std::vector<double> coords_;
 	};
 } // namespace comp6771
 #endif // COMP6771_EUCLIDEAN_VECTOR_HPP
