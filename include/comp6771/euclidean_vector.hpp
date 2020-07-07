@@ -25,12 +25,43 @@ namespace comp6771 {
 	class euclidean_vector {
 	public:
 		euclidean_vector();
-		euclidean_vector(int dim);
+		explicit euclidean_vector(int dim);
 		euclidean_vector(int dim, double magnitude);
-		auto test() -> void;
+		euclidean_vector(std::vector<double>::const_iterator begin,
+		                 std::vector<double>::const_iterator end);
+		euclidean_vector(std::initializer_list<double>);
+
+		euclidean_vector(euclidean_vector const&); // copy constructor
+
+		// euclidean_vector(euclidean_vector&&) noexcept; // move constructor
+
+		auto operator=(euclidean_vector const&) -> euclidean_vector&;
+		auto operator[](int const&) const -> double;
+		auto operator[](int const&) -> double&;
+		auto operator+() -> euclidean_vector;
+		auto operator-() -> euclidean_vector;
+		auto operator+=(euclidean_vector const&) -> euclidean_vector&;
+		auto operator-=(euclidean_vector const&) -> euclidean_vector&;
+		auto operator*=(euclidean_vector const&) -> euclidean_vector&;
+		auto operator/=(euclidean_vector const&) -> euclidean_vector&;
+
+		explicit operator std::vector<double>() const {
+			auto temp = std::vector<double>{};
+			for (size_t i = 0; i < static_cast<size_t>(dim_); i++) {
+				temp.push_back(magnitudes_[i]);
+			}
+			return temp;
+		}
+
+		auto get_coords() -> double*;
+		[[nodiscard]] auto get_dim() const -> size_t;
 
 	private:
-		std::vector<double> coords_;
+		// auto swap(euclidean_vector& other) -> euclidean_vector&;
+		// ass2 spec requires we use double[]
+		// NOLINTNEXTLINE(modernize-avoid-c-arrays)
+		std::unique_ptr<double[]> magnitudes_;
+		size_t dim_;
 	};
 } // namespace comp6771
 #endif // COMP6771_EUCLIDEAN_VECTOR_HPP
