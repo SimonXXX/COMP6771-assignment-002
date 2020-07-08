@@ -53,11 +53,25 @@ namespace comp6771 {
 			return temp;
 		}
 
+		[[nodiscard]] auto at(int) const -> double;
+		auto at(int) -> double&;
+		[[nodiscard]] auto dimensions() const -> int;
+
+		// member functions for testing
 		auto get_coords() -> double*;
 		[[nodiscard]] auto get_dim() const -> size_t;
 
+		// 5. friends
+		friend auto operator==(euclidean_vector const&, euclidean_vector const&) -> bool;
+		friend auto operator!=(euclidean_vector const&, euclidean_vector const&) -> bool;
+		friend auto operator+(euclidean_vector const&, euclidean_vector const&) -> euclidean_vector;
+		friend auto operator-(euclidean_vector const&, euclidean_vector const&) -> euclidean_vector;
+		friend auto operator*(euclidean_vector const&, double const&) -> euclidean_vector;
+		friend auto operator*(double const&, euclidean_vector const&) -> euclidean_vector;
+		friend auto operator/(euclidean_vector const&, double const&) -> euclidean_vector;
+		friend auto operator<<(std::ostream&, euclidean_vector const&) -> std::ostream&;
+
 	private:
-		// auto swap(euclidean_vector& other) -> euclidean_vector&;
 		// ass2 spec requires we use double[]
 		// NOLINTNEXTLINE(modernize-avoid-c-arrays)
 		std::unique_ptr<double[]> magnitudes_;
