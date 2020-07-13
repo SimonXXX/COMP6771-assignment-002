@@ -1,7 +1,8 @@
 #ifndef COMP6771_EUCLIDEAN_VECTOR_HPP
 #define COMP6771_EUCLIDEAN_VECTOR_HPP
 
-//#include <compare>
+// COMP6771 - Assignment 2 - Simon Garrod - z326122
+//
 #include <fmt/ostream.h>
 #include <functional>
 #include <iostream>

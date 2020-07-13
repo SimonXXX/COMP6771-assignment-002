@@ -1,3 +1,5 @@
+// COMP6771 - Assignment 2 - Simon Garrod - z326122
+//
 #include "comp6771/euclidean_vector.hpp"
 
 #include <catch2/catch.hpp>

@@ -1,6 +1,8 @@
 // Copyright (c) Christopher Di Bella.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
+// COMP6771 - Assignment 2 - Simon Garrod - z326122
+//
 #include "../include/comp6771/euclidean_vector.hpp"
 #include <algorithm>
 #include <cmath>
@@ -220,12 +222,13 @@ namespace comp6771 {
 			throw std::out_of_range("euclidean_vector with zero euclidean normal does not have a "
 			                        "unit vector");
 		}
+
 		return v / norm;
 	}
 
 	auto dot(euclidean_vector const& x, euclidean_vector const& y) -> double {
 		if (x.dimensions() != y.dimensions()) {
-			throw std::out_of_range(fmt::format("Dimensions of LHS({}}) and RHS({}}) do not match",
+			throw std::out_of_range(fmt::format("Dimensions of LHS({}) and RHS({}) do not match",
 			                                    x.dimensions(),
 			                                    y.dimensions()));
 		}
