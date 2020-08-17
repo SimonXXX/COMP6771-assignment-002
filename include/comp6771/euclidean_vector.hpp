@@ -136,7 +136,7 @@ namespace comp6771 {
 		}
 
 		auto friend operator<<(std::ostream& os, euclidean_vector const& v) -> std::ostream& {
-			os << fmt::format("[{}]", fmt::join(static_cast<std::vector<double>>(v), " "));
+			os << fmt::format("[{:1}]", fmt::join(static_cast<std::vector<double>>(v), " "));
 			return os;
 		}
 

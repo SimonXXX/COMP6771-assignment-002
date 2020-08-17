@@ -8,7 +8,7 @@
 #include <fmt/format.h>
 #include <fmt/ostream.h>
 #include <iostream>
-
+#include <sstream>
 // TESTS ON FRIEND FUNCTION
 
 TEST_CASE("friends") {
@@ -90,8 +90,15 @@ TEST_CASE("friends") {
 	}
 	SECTION("output stream") {
 		auto h1 = comp6771::euclidean_vector{0.0, 2.0, 2.5, 1.111, 95.45};
-		auto h2 = comp6771::euclidean_vector(5, 2.0);
+		auto h2 = comp6771::euclidean_vector{1, 2, 3, 4, 5, 6, 7};
 		auto h3 = comp6771::euclidean_vector(5, 1.0);
 		CHECK(fmt::format("{}", h1) == "[0.0 2.0 2.5 1.111 95.45]");
+		auto out = std::ostringstream{};
+		out << h1;
+		auto const expected_output = std::string("[0.0 2.0 2.5 1.111 95.45]");
+		auto out1 = std::ostringstream{};
+		out1 << h2;
+		auto const expected_output1 = std::string("[1.0 2.0 3.0 4.0 5.0 6.0 7.0]");
+		CHECK(out1.str() == expected_output1);
 	}
 }
